@@ -1,0 +1,58 @@
+{
+  "name": "section-2",
+  "version": "0.1.0",
+  "description": "A library for calculating unsocial hours entitlements under the NHS agenda for change's section 2",
+  "main": "lib/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurenceks/section-2.git"
+  },
+  "keywords": [
+    "nhs",
+    "section2",
+    "section",
+    "2",
+    "ush",
+    "unsocial",
+    "unsocial",
+    "hours",
+    "national",
+    "health",
+    "service",
+    "afc",
+    "agenda",
+    "for",
+    "change",
+    "library",
+    "utility",
+    "utilities",
+    "calculator"
+  ],
+  "author": "Laurence Summers",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/laurenceks/section-2/issues"
+  },
+  "homepage": "https://github.com/laurenceks/section-2#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.27.1",
+    "@eslint/js": "^9.24.0",
+    "@types/jest": "^30.0.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-import-resolver-typescript": "^4.4.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "jest": "^29.7.0",
+    "prettier": "3.5.3",
+    "ts-jest": "^29.3.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1"
+  }
+}
