@@ -269,7 +269,7 @@ export const calculateUsh = ({
 
         let plannedLength = plannedToObj.getTime() - fromObj.getTime();
 
-        const remainingBreak =
+        let remainingBreak =
             break_override === null || break_override === undefined
                 ? plannedLength > 21600000
                     ? 1800000
@@ -343,6 +343,16 @@ export const calculateUsh = ({
                 if (hours_over_threshold) {
                     // update shift length to match USH length with OT hours deducted
                     plannedLength = plannedToObj.getTime() - fromObj.getTime();
+
+                    // adjust break as it will always come off OT (? impossible to reach OT threshold if break in flat)
+                    remainingBreak = Math.max(
+                        0,
+                        remainingBreak -
+                            Math.max(
+                                0,
+                                hours_over_threshold - paidOverrunLength
+                            )
+                    );
                 }
                 if (break_from_higher) {
                     // take break from more expensive side
