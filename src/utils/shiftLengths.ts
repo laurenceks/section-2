@@ -2,6 +2,15 @@ import { convertToNumber } from "./conversions";
 import { formatDate } from "./formatDates";
 import bankHolidays from "../data/bankHolidays";
 
+export const calculateBreak = (
+    shiftLengthMs: number,
+    break_override?: number | null
+) =>
+    break_override === null || break_override === undefined
+        ? shiftLengthMs > 21600000
+            ? 1800000
+            : 0
+        : break_override;
 export const calculateShiftLength = (
     from: Date | string | number,
     to: Date | string | number
