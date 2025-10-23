@@ -1,5 +1,5 @@
 import { section2Expectations } from "./expectations";
-import { calculateSection2 } from "../src/calculations/section2";
+import { calculateSection2 } from "../src";
 
 const toHours = (obj) =>
     Object.fromEntries(
@@ -8,8 +8,12 @@ const toHours = (obj) =>
             typeof v === "number" ? v / 3600000 : v,
         ])
     );
+
 Object.entries(section2Expectations).forEach(
-    ([key, arr]: [keyof typeof section2Expectations, any]) => {
+    ([key, arr]: [
+        keyof typeof section2Expectations,
+        (typeof section2Expectations)[keyof typeof section2Expectations],
+    ]) => {
         describe(key, () => {
             arr.forEach((x) => {
                 test(
