@@ -105,8 +105,10 @@ const calculateBankHolidayHours = (
     hoursUntilThresholdMs: number = 0,
     break_from_higher: boolean = true
 ) => {
-    let double = 0;
-    let toil = 0;
+    let plannedDouble = 0;
+    let plannedToil = 0;
+    let overrunDouble = 0;
+    let overrunToil = 0;
     if (
         (type === "Normal" || type === "OT") &&
         (fromIsBankHoliday || toIsBankHoliday)
@@ -133,14 +135,14 @@ const calculateBankHolidayHours = (
             hoursUntilThresholdMs >= plannedLength - breakLength
         ) {
             //normal shift - just add earned TOIL
-            toil += calculateRawBankHoliday(fromObj, plannedToObj);
+            plannedToil += calculateRawBankHoliday(fromObj, plannedToObj);
         } else if (hoursUntilThresholdMs <= 0) {
             //shift is all OT hours - just add earned double
-            double += calculateRawBankHoliday(fromObj, plannedToObj);
+            plannedDouble += calculateRawBankHoliday(fromObj, plannedToObj);
         } else {
             if (flatTo > fromObj) {
                 //mixed flat and OT shift - add TOIL for flat hours before threshold (including break)
-                toil += Math.max(
+                plannedToil += Math.max(
                     0,
                     calculateRawBankHoliday(
                         fromObj,
@@ -152,7 +154,7 @@ const calculateBankHolidayHours = (
             }
             if (flatTo < plannedToObj) {
                 //add any planned hours over threshold to double if still in BH window (excluding break)
-                double += calculateRawBankHoliday(flatTo, plannedToObj);
+                plannedDouble += calculateRawBankHoliday(flatTo, plannedToObj);
             }
         }
 
@@ -162,30 +164,30 @@ const calculateBankHolidayHours = (
                 type === "Normal" ||
                 hoursUntilThresholdMs >= plannedLength - breakLength
             ) {
-                if (break_from_higher || plannedLength === toil) {
+                if (break_from_higher || plannedLength === plannedToil) {
                     //shift is all toil, or break comes from higher rate first which aligns with toil
-                    toil -= Math.min(
+                    plannedToil -= Math.min(
                         breakLength,
-                        Math.max(0, toil - breakLength)
+                        Math.max(0, plannedToil - breakLength)
                     );
                 }
             } else if (hoursUntilThresholdMs <= 0) {
                 //shift is all OT hours
-                if (double >= plannedLength) {
+                if (plannedDouble >= plannedLength) {
                     //shift is all double
-                    double -= Math.min(
+                    plannedDouble -= Math.min(
                         breakLength,
-                        Math.max(0, double - breakLength)
+                        Math.max(0, plannedDouble - breakLength)
                     );
                 } else {
                     const timeAndHalf = Math.max(
                         0,
-                        plannedLength - hoursUntilThresholdMs - double
+                        plannedLength - hoursUntilThresholdMs - plannedDouble
                     );
 
                     let doubleBreak = 0;
                     if (break_from_higher) {
-                        doubleBreak = Math.min(breakLength, double);
+                        doubleBreak = Math.min(breakLength, plannedDouble);
                     } else {
                         // take break from less expensive side first (time_and_half is calculated elsewhere)
                         const timeAndHalfBreak = Math.min(
@@ -197,30 +199,33 @@ const calculateBankHolidayHours = (
                             breakLength - timeAndHalfBreak
                         );
                     }
-                    double = Math.max(0, double - doubleBreak);
+                    plannedDouble = Math.max(0, plannedDouble - doubleBreak);
                 }
             } else {
                 //shift is a mix of TOIL and OT
                 //calculate break in TOIL section
                 const nonBhBreak = Math.min(
                     breakLength,
-                    Math.max(0, plannedLength - toil - double)
+                    Math.max(0, plannedLength - plannedToil - plannedDouble)
                 );
                 const toilBreak = break_from_higher
-                    ? Math.min(breakLength, toil)
-                    : Math.min(Math.max(0, breakLength - nonBhBreak), toil);
+                    ? Math.min(breakLength, plannedToil)
+                    : Math.min(
+                          Math.max(0, breakLength - nonBhBreak),
+                          plannedToil
+                      );
 
-                toil -= toilBreak;
+                plannedToil -= toilBreak;
 
                 if (toilBreak < breakLength) {
                     const timeAndHalf = Math.max(
                         0,
-                        plannedLength - hoursUntilThresholdMs - double
+                        plannedLength - hoursUntilThresholdMs - plannedDouble
                     );
 
                     let doubleBreak = 0;
                     if (break_from_higher) {
-                        doubleBreak = Math.min(breakLength, double);
+                        doubleBreak = Math.min(breakLength, plannedDouble);
                     } else {
                         // take break from less expensive side first (time_and_half is calculated elsewhere)
                         const timeAndHalfBreak = Math.min(
@@ -232,30 +237,42 @@ const calculateBankHolidayHours = (
                             breakLength - timeAndHalfBreak
                         );
                     }
-                    double -= doubleBreak;
+                    plannedDouble -= doubleBreak;
                 }
             }
         }
 
         //overrun hours
         if (overrun_type === "OT" && actualToObj > plannedToObj) {
-            if (flatTo > plannedToObj) {
+            const otFrom =
+                type === "Normal"
+                    ? new Date(
+                          Math.min(
+                              plannedToObj.getTime() + hoursUntilThresholdMs,
+                              actualToObj.getTime()
+                          )
+                      )
+                    : flatTo;
+            if (otFrom > plannedToObj) {
                 //add flat additional hours TOIL
-                toil += calculateRawBankHoliday(
+                overrunToil = calculateRawBankHoliday(
                     plannedToObj,
-                    flatTo > actualToObj ? actualToObj : flatTo
+                    otFrom > actualToObj ? actualToObj : otFrom
                 );
             }
-            if (flatTo < actualToObj) {
+            if (otFrom < actualToObj) {
                 //add OT double
-                double += calculateRawBankHoliday(
-                    flatTo < plannedToObj ? plannedToObj : flatTo,
+                overrunDouble = calculateRawBankHoliday(
+                    otFrom < plannedToObj ? plannedToObj : otFrom,
                     actualToObj
                 );
             }
         }
     }
-    return { toil, double };
+    return {
+        toil: plannedToil + overrunToil,
+        double: plannedDouble + overrunDouble,
+    };
 };
 
 /**
@@ -376,7 +393,7 @@ export const calculateAdditionalHours = (
                     weeklyOtThresholdHours
                 ) {
                     if (fromIsBankHoliday || toIsBankHoliday) {
-                        if (type === "OT") {
+                        if (type === "OT" || overrun_type === "OT") {
                             additionalHoursBreakdown.double += bhDouble;
                         }
                     }
