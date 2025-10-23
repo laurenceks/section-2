@@ -1,4 +1,4 @@
-import { isBankHoliday } from "../utils/shiftLengths";
+import { calculateBreak, isBankHoliday } from "../utils/shiftLengths";
 import {
     LeaveReliefUsh,
     Overrun,
@@ -256,6 +256,7 @@ export const calculateUsh = ({
 
         plannedLowerRaw = calculateRawLowerRate(fromObj, plannedToObj);
         plannedHigherRaw = calculateRawHigherRate(fromObj, plannedToObj);
+        const totalPlannedUshRaw = plannedLowerRaw + plannedHigherRaw;
 
         const paidOverrunLength =
             actualToObj && overrun_type === "OT"
@@ -268,16 +269,10 @@ export const calculateUsh = ({
         }
 
         let plannedLength = plannedToObj.getTime() - fromObj.getTime();
-
-        let remainingBreak =
-            break_override === null || break_override === undefined
-                ? plannedLength > 21600000
-                    ? 1800000
-                    : 0
-                : break_override;
+        const breakLength = calculateBreak(plannedLength, break_override);
 
         if (hours_over_threshold) {
-            //recalculate USH based on new end
+            //recalculate USH based on new end including break
             if (type === "OT") {
                 plannedToObj.setTime(
                     Math.min(
@@ -286,7 +281,6 @@ export const calculateUsh = ({
                             fromObj.getTime(),
                             plannedToObj.getTime() +
                                 paidOverrunLength -
-                                remainingBreak -
                                 hours_over_threshold
                         )
                     )
@@ -315,9 +309,6 @@ export const calculateUsh = ({
                 );
             }
         }
-
-        const totalPlannedUshRaw = plannedLowerRaw + plannedHigherRaw;
-
         if (
             totalPlannedUshRaw > plannedLength / 2 ||
             (half_is_all_ush && totalPlannedUshRaw >= plannedLength / 2)
@@ -328,7 +319,7 @@ export const calculateUsh = ({
                 plannedLowerRaw = Math.max(
                     0,
                     plannedLength -
-                        remainingBreak -
+                        breakLength -
                         Math.max(hours_over_threshold - paidOverrunLength, 0)
                 );
             } else if (!plannedLowerRaw) {
@@ -336,48 +327,44 @@ export const calculateUsh = ({
                 plannedHigherRaw = Math.max(
                     0,
                     plannedLength -
-                        remainingBreak -
+                        breakLength -
                         Math.max(hours_over_threshold - paidOverrunLength, 0)
                 );
             } else {
-                if (hours_over_threshold) {
+                if (hours_over_threshold - paidOverrunLength > 0) {
                     // update shift length to match USH length with OT hours deducted
                     plannedLength = plannedToObj.getTime() - fromObj.getTime();
-
-                    // adjust break as it will always come off OT (? impossible to reach OT threshold if break in flat)
-                    remainingBreak = Math.max(
-                        0,
-                        remainingBreak -
-                            Math.max(
-                                0,
-                                hours_over_threshold - paidOverrunLength
-                            )
-                    );
                 }
                 if (break_from_higher) {
                     // take break from more expensive side
-                    const segmentBreak = Math.min(
-                        plannedHigherRaw,
-                        remainingBreak
-                    );
+                    const higherBreak = Math.min(plannedHigherRaw, breakLength);
+
+                    const plannedHigherNoBreak = plannedHigherRaw;
 
                     //higher rate can never be increased beyond its raw value
                     plannedHigherRaw = Math.min(
-                        plannedHigherRaw - segmentBreak,
-                        plannedLength - plannedLowerRaw - segmentBreak
+                        plannedHigherRaw - higherBreak,
+                        plannedLength - plannedLowerRaw - higherBreak
                     );
 
                     plannedLowerRaw =
-                        plannedLength - plannedHigherRaw - remainingBreak;
+                        plannedLength -
+                        plannedHigherNoBreak -
+                        (breakLength - higherBreak);
                 } else {
                     // take break from less expensive side
-                    const segmentBreak = Math.min(
-                        plannedLowerRaw,
-                        remainingBreak
+                    const lowerBreak = Math.min(plannedLowerRaw, breakLength);
+                    const plannedLowerNoBreak = plannedLowerRaw;
+
+                    plannedLowerRaw = Math.min(
+                        plannedLowerRaw - lowerBreak,
+                        plannedLength - plannedHigherRaw - lowerBreak
                     );
-                    plannedLowerRaw =
-                        plannedLength - plannedHigherRaw - segmentBreak;
-                    plannedHigherRaw -= remainingBreak - segmentBreak;
+
+                    plannedHigherRaw =
+                        plannedLength -
+                        plannedLowerNoBreak -
+                        (breakLength - lowerBreak);
                 }
             }
         }

@@ -101,6 +101,7 @@ export const calculateSection2 = (
             employment_id,
             weekly_hours,
             break_override,
+            break_from_higher,
         },
         shifts || []
     );

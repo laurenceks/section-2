@@ -85,6 +85,8 @@ export interface AdditionHoursParams {
     weekly_hours: number;
     /** The duration of the shift's break **in ms** to override the default of 30mins every 6hrs */
     break_override?: number | null;
+    /** If set to `true` breaks will first be deducted from double rate earnings, if `false` from time and half rate first (but only when the whole shift is at OT rates) */
+    break_from_higher?: boolean;
 }
 
 /**
