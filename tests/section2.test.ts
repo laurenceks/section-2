@@ -1,5 +1,6 @@
-import { section2Expectations } from "./expectations";
-import { calculateSection2 } from "../src";
+import { calculateSection2, Section2, Section2Params } from "../src";
+import { section2Expectations } from "./expectations/section2";
+import { invalidArgumentsExpectations } from "./expectations/invalidArguments";
 
 const toHours = (obj) =>
     Object.fromEntries(
@@ -29,3 +30,23 @@ Object.entries(section2Expectations).forEach(
         });
     }
 );
+
+const errorResult: Section2 = {
+    absent_hours: 0,
+    double: 0,
+    flat: 0,
+    higher_rate: 0,
+    lower_rate: 0,
+    time_and_half: 0,
+    toil: 0,
+};
+
+describe("Invalid arguments", () => {
+    invalidArgumentsExpectations.forEach((x) => {
+        test(x.name, () => {
+            expect(
+                calculateSection2(x.params as Section2Params, x.options)
+            ).toEqual(x.result || errorResult);
+        });
+    });
+});

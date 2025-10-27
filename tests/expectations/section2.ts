@@ -1,4 +1,4 @@
-import { Section2, Section2Options, Section2Params } from "../src";
+import { Section2, Section2Options, Section2Params } from "../../src";
 
 export const section2Expectations: {
     [key: string]: {
@@ -283,6 +283,92 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 900000,
+            },
+        },
+    ],
+    Normal: [
+        {
+            params: {
+                name: "Normal Sunday",
+                from: "2025-10-05 06:50:00",
+                planned_to: "2025-10-05 18:50:00",
+                actual_to: "2025-10-05 18:50:00",
+                type: "Normal",
+                overrun_type: "OT",
+            },
+            options: {
+                weekly_hours: 82800000,
+                break_from_higher: true,
+                half_is_all_ush: true,
+            },
+            result: {
+                toil: 0,
+                flat: 0,
+                lower_rate: 0,
+                time_and_half: 0,
+                higher_rate: 41400000,
+                double: 0,
+                absent_hours: 0,
+            },
+        },
+        {
+            params: {
+                name: "Normal Fri into Sat",
+                from: "2025-10-03 18:00:00",
+                planned_to: "2025-10-04 06:00:00",
+                actual_to: "2025-10-04 06:00:00",
+                type: "Normal",
+                overrun_type: "OT",
+            },
+            options: {},
+            result: {
+                toil: 0,
+                flat: 0,
+                lower_rate: 41400000,
+                time_and_half: 0,
+                higher_rate: 0,
+                double: 0,
+                absent_hours: 0,
+            },
+        },
+        {
+            params: {
+                name: "Normal Fri just into Sat",
+                from: "2025-10-03 13:00:00",
+                planned_to: "2025-10-04 01:00:00",
+                actual_to: "2025-10-04 01:00:00",
+                type: "Normal",
+                overrun_type: "OT",
+            },
+            options: {},
+            result: {
+                toil: 0,
+                flat: 0,
+                lower_rate: 18000000,
+                time_and_half: 0,
+                higher_rate: 0,
+                double: 0,
+                absent_hours: 0,
+            },
+        },
+        {
+            params: {
+                name: "End after 2000",
+                from: "2025-10-03 23:40:00",
+                planned_to: "2025-10-04 22:40:00",
+                actual_to: "2025-10-04 22:40:00",
+                type: "Normal",
+                overrun_type: "OT",
+            },
+            options: {},
+            result: {
+                toil: 0,
+                flat: 0,
+                lower_rate: 81000000,
+                time_and_half: 0,
+                higher_rate: 0,
+                double: 0,
+                absent_hours: 0,
             },
         },
     ],
