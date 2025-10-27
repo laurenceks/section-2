@@ -4,7 +4,7 @@ A library for calculating unsocial hours entitlements under the NHS agenda for c
 ## Features
 
 - Dependency free
-- Lightweight (~20kb)
+- Lightweight (~32.1kb)
 - Fully typed
 - Extensively tested
 - ESM and CJS versions
