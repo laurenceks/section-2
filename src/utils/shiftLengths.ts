@@ -31,7 +31,5 @@ export const calculateShiftHours = (
 
 export const isBankHoliday = (date: Date) => {
     const lookupDate = formatDate(date, "sorting");
-    return bankHolidays["england-and-wales"].events.some(
-        (bh) => bh.date === lookupDate
-    );
+    return bankHolidays["england-and-wales"].some((bh) => bh === lookupDate);
 };
