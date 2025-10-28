@@ -16,6 +16,7 @@ import {
     calculateShiftLength,
     isBankHoliday,
 } from "../utils/shiftLengths";
+import { validateTimestampOrder } from "../utils/validateTimestamp";
 
 export const calculateCumulativeAdditionalHours = (
     from: Date,
@@ -316,7 +317,7 @@ export const calculateAdditionalHours = (
         absent_hours: 0,
     };
 
-    if (!(actual_to >= planned_to && planned_to >= from)) {
+    if (!validateTimestampOrder(from, planned_to, actual_to)) {
         //times are out of sequence - return 0 for everything
         return additionalHoursBreakdown;
     }

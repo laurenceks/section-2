@@ -1,4 +1,7 @@
-import { validateTimestamp } from "../utils/validateTimestamp";
+import {
+    validateTimestamp,
+    validateTimestampOrder,
+} from "../utils/validateTimestamp";
 import { makeToAlwaysLater } from "../utils/conversions";
 import { calculateAdditionalHours } from "./additionalHours";
 import { calculateUsh } from "./ush";
@@ -9,6 +12,16 @@ import {
     Section2Params,
     ShiftType,
 } from "../types/section2";
+
+const errorResult = {
+    flat: 0,
+    higher_rate: 0,
+    time_and_half: 0,
+    toil: 0,
+    lower_rate: 0,
+    double: 0,
+    absent_hours: 0,
+};
 
 /**
  * Calculates Section2 object containing additional and unsocial hours in ms
@@ -72,16 +85,22 @@ export const calculateSection2 = (
         console.warn(
             "Invalid datetime passed - function will return 0 for all fields. Datetimes must be a Date object, unix time or a string in yyyy-mm-dd or ISO format."
         );
-        return {
-            flat: 0,
-            higher_rate: 0,
-            time_and_half: 0,
-            toil: 0,
-            lower_rate: 0,
-            double: 0,
-            absent_hours: 0,
-        };
+        return errorResult;
     }
+    if (
+        !validateTimestampOrder(
+            new Date(from),
+            new Date(planned_to),
+            actual_to ? new Date(actual_to) : null
+        )
+    ) {
+        console.warn(
+            "Invalid datetime passed - function will return 0 for all fields. Datetimes must be in ascending order (from <= planned_to <= actual_to || !actual_to)"
+        );
+        //times are out of sequence - return 0 for everything
+        return errorResult;
+    }
+
     const { fromObj, toObj: plannedToObj } = makeToAlwaysLater(
         from,
         planned_to
