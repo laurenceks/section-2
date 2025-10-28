@@ -1,7 +1,7 @@
 import { makeToAlwaysLater } from "../utils/conversions";
 import {
     AdditionalHours,
-    AdditionHoursParams,
+    AdditionalHoursParams,
     Overrun,
     Section2Shift,
     ShiftType,
@@ -305,7 +305,7 @@ export const calculateAdditionalHours = (
         weekly_hours,
         break_override = null,
         break_from_higher = true,
-    }: AdditionHoursParams,
+    }: AdditionalHoursParams,
     shifts: Section2Shift[]
 ) => {
     const additionalHoursBreakdown: AdditionalHours = {

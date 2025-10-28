@@ -66,7 +66,7 @@ export interface Section2 extends AdditionalHours, Ush {}
  * The object representing a shift required to calculate additional hours
  */
 
-export interface AdditionHoursParams {
+export interface AdditionalHoursParams {
     /** The unique identifier of the shift */
     id?: string | number;
     /** The datetime of the start of the shift */
@@ -85,7 +85,7 @@ export interface AdditionHoursParams {
     weekly_hours: number;
     /** The duration of the shift's break **in ms** to override the default of 30mins every 6hrs */
     break_override?: number | null;
-    /** If set to `true` breaks will first be deducted from double rate earnings, if `false` from time and half rate first (but only when the whole shift is at OT rates) */
+    /** If set to `true` breaks will first be deducted from higher/double rate earnings, if `false` from lower/time and half rate first (at flat rates first, then OT rates) */
     break_from_higher?: boolean;
 }
 
@@ -106,9 +106,9 @@ export interface Section2Options {
 
 export interface UshParams
     extends Omit<Section2Options, "weekly_hours">,
-        Omit<AdditionHoursParams, "type" | "actual_to" | "overrun_type">,
+        Omit<AdditionalHoursParams, "type" | "actual_to" | "overrun_type">,
         Partial<
-            Pick<AdditionHoursParams, "type" | "actual_to" | "overrun_type">
+            Pick<AdditionalHoursParams, "type" | "actual_to" | "overrun_type">
         > {
     /** An array of shifts, used to calculate different rate thresholds and unsocial averages */
     shifts?: Section2Shift[];
