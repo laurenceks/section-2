@@ -1,4 +1,8 @@
-import { calculateBreak, isBankHoliday } from "../utils/shiftLengths";
+import {
+    calculateBreak,
+    calculateShiftHours,
+    isBankHoliday,
+} from "../utils/shiftLengths";
 import {
     LeaveReliefUsh,
     Overrun,
@@ -85,6 +89,7 @@ const calculateRawLowerRate = (from: Date, to: Date) => {
 
         if (toTime > to2000 && to2000 > from2400) {
             // end after 2000
+            //TODO unreachable?
             lowerRateHours += toTime - Math.max(to2000, fromTime);
         }
     }
@@ -181,18 +186,17 @@ const calculateAverageUshForRelief = (
                         : 0)
             );
     }
-    const shiftLength =
-        new Date(plannedTo).getTime() - new Date(from).getTime();
+    const shiftHours = calculateShiftHours(from, plannedTo);
 
     return {
         plannedLowerRaw:
             totalUsh.hours === 0
                 ? 0
-                : Math.round((totalUsh.lower / totalUsh.hours) * shiftLength),
+                : Math.round((totalUsh.lower / totalUsh.hours) * shiftHours),
         plannedHigherRaw:
             totalUsh.hours === 0
                 ? 0
-                : Math.round((totalUsh.higher / totalUsh.hours) * shiftLength),
+                : Math.round((totalUsh.higher / totalUsh.hours) * shiftHours),
     };
 };
 
@@ -388,7 +392,7 @@ export const calculateUsh = ({
                     } = calculateAverageUshForRelief(
                         from,
                         planned_to,
-                        13,
+                        52,
                         shifts,
                         employment_id
                     );
