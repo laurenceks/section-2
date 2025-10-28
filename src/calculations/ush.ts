@@ -10,6 +10,7 @@ import {
     ShiftType,
 } from "../types/section2";
 import { addDaysToTimestamp, formatDate } from "../utils/formatDates";
+import { validateTimestampParameters } from "../utils/validateTimestamp";
 
 const calculateRawLowerRate = (from: Date, to: Date) => {
     // returns in ms the total time within the lower rate windows
@@ -249,6 +250,11 @@ export const calculateUsh = ({
     leave_relief_ush_type?: LeaveReliefUsh;
     employment_id?: string | number;
 }) => {
+    if (!validateTimestampParameters(from, planned_to, actual_to)) {
+        //times are either invalid or out of sequence - return 0 for everything
+        return { lower_rate: 0, higher_rate: 0 };
+    }
+
     let plannedLowerRaw = 0;
     let plannedHigherRaw = 0;
     let overrunLower = 0;

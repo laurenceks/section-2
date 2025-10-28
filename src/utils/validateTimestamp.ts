@@ -19,8 +19,35 @@ export const validateTimestamp = (
     );
 };
 
-export const validateTimestampOrder = (
-    from: Date,
-    planned_to: Date,
-    actual_to?: Date | null
-) => (!actual_to || actual_to >= planned_to) && planned_to >= from;
+export const validateTimestampParameters = (
+    from: string | number | Date,
+    planned_to: string | number | Date,
+    actual_to?: string | number | Date | null
+) => {
+    if (
+        !validateTimestamp(from) ||
+        !validateTimestamp(planned_to) ||
+        (!!actual_to && !validateTimestamp(actual_to))
+    ) {
+        console.warn(
+            "Invalid datetime passed - function will return 0 for all fields. Datetimes must be a Date object, unix time or a string in yyyy-mm-dd or ISO format."
+        );
+        return false;
+    }
+    const fromObj = new Date(from);
+    const plannedToObj = new Date(planned_to);
+    const actualToObj = actual_to ? new Date(actual_to) : null;
+    if (
+        !(
+            (!actualToObj || actualToObj >= plannedToObj) &&
+            plannedToObj >= fromObj
+        )
+    ) {
+        console.warn(
+            "Invalid datetime passed - function will return 0 for all fields. Datetimes must be in ascending order (from <= planned_to <= actual_to || !actual_to)"
+        );
+        //times are out of sequence - return 0 for everything
+        return false;
+    }
+    return true;
+};
