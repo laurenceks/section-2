@@ -1,4 +1,9 @@
-import { calculateSection2, Section2, Section2Params } from "../src";
+import {
+    calculateAdditionalHours,
+    calculateSection2,
+    calculateUsh,
+    Section2Params,
+} from "../src";
 import { section2Expectations } from "./expectations/section2";
 import { invalidArgumentsExpectations } from "./expectations/invalidArguments";
 
@@ -31,22 +36,47 @@ Object.entries(section2Expectations).forEach(
     }
 );
 
-const errorResult: Section2 = {
-    absent_hours: 0,
-    double: 0,
-    flat: 0,
-    higher_rate: 0,
-    lower_rate: 0,
-    time_and_half: 0,
-    toil: 0,
-};
+const funcs = [calculateSection2, calculateAdditionalHours, calculateUsh];
+const errorResults = [
+    {
+        absent_hours: 0,
+        double: 0,
+        flat: 0,
+        higher_rate: 0,
+        lower_rate: 0,
+        time_and_half: 0,
+        toil: 0,
+    },
+    {
+        absent_hours: 0,
+        double: 0,
+        flat: 0,
+        time_and_half: 0,
+        toil: 0,
+    },
+    {
+        higher_rate: 0,
+        lower_rate: 0,
+    },
+];
+const namePrefixes = ["S2", "AH", "USH"];
 
 describe("Invalid arguments", () => {
-    invalidArgumentsExpectations.forEach((x) => {
-        test(x.name, () => {
-            expect(
-                calculateSection2(x.params as Section2Params, x.options)
-            ).toEqual(x.result || errorResult);
-        });
-    });
+    invalidArgumentsExpectations.forEach(
+        (x: (typeof invalidArgumentsExpectations)[number]) => {
+            test(`${namePrefixes[x.function ?? 0]} ${x.name}`, () => {
+                expect(
+                    x.function
+                        ? funcs[x.function](
+                              x.params as Section2Params,
+                              x.options
+                          )
+                        : calculateSection2(
+                              x.params as Section2Params,
+                              x.options
+                          )
+                ).toEqual(x.result || errorResults[x.function ?? 0]);
+            });
+        }
+    );
 });
