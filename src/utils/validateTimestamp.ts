@@ -18,3 +18,9 @@ export const validateTimestamp = (
         Number(timestamp) >= -8640000000000000
     );
 };
+
+export const validateTimestampOrder = (
+    from: Date,
+    planned_to: Date,
+    actual_to?: Date | null
+) => (!actual_to || actual_to >= planned_to) && planned_to >= from;
