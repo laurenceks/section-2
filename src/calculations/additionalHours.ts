@@ -107,11 +107,13 @@ const calculateBankHolidayHours = (
     break_from_higher: boolean = true
 ) => {
     let plannedDouble = 0;
+    // plannedToil is used to calculate proportions for where breaks should be deducted, but only planned shifts attract it
     let plannedToil = 0;
     let overrunDouble = 0;
-    let overrunToil = 0;
     if (
-        (type === "Normal" || type === "OT") &&
+        (type === "Normal" ||
+            type === "OT" ||
+            (type === "TOIL" && overrun_type === "OT")) &&
         (fromIsBankHoliday || toIsBankHoliday)
     ) {
         const fromObj = new Date(from);
@@ -122,11 +124,11 @@ const calculateBankHolidayHours = (
         const flatTo = new Date(
             Math.min(
                 actualToObj.getTime(),
-                (type === "Normal"
+                (type === "Normal" || type === "TOIL"
                     ? plannedToObj.getTime()
                     : fromObj.getTime()) +
                     hoursUntilThresholdMs +
-                    breakLength
+                    (type === "TOIL" ? 0 : breakLength)
             )
         );
 
@@ -137,7 +139,7 @@ const calculateBankHolidayHours = (
         ) {
             //normal shift - just add earned TOIL
             plannedToil += calculateRawBankHoliday(fromObj, plannedToObj);
-        } else if (hoursUntilThresholdMs <= 0) {
+        } else if (type === "OT" && hoursUntilThresholdMs <= 0) {
             //shift is all OT hours - just add earned double
             plannedDouble += calculateRawBankHoliday(fromObj, plannedToObj);
         } else {
@@ -254,13 +256,6 @@ const calculateBankHolidayHours = (
                           )
                       )
                     : flatTo;
-            if (otFrom > plannedToObj) {
-                //add flat additional hours TOIL
-                overrunToil = calculateRawBankHoliday(
-                    plannedToObj,
-                    otFrom > actualToObj ? actualToObj : otFrom
-                );
-            }
             if (otFrom < actualToObj) {
                 //add OT double
                 overrunDouble = calculateRawBankHoliday(
@@ -270,8 +265,10 @@ const calculateBankHolidayHours = (
             }
         }
     }
+
     return {
-        toil: plannedToil + overrunToil,
+        // only normal shifts can earn toil
+        toil: type === "Normal" ? plannedToil : 0,
         double: plannedDouble + overrunDouble,
     };
 };
@@ -350,7 +347,7 @@ export const calculateAdditionalHours = (
                 ? 0
                 : calculateShiftLength(plannedToObj, actualToObj);
 
-        const paidAdditionalHours =
+        let paidAdditionalHours =
             plannedAdditionalHours + (overrun_type === "OT" ? overrunHours : 0);
 
         if (absentShiftTypes.includes(type)) {
@@ -381,7 +378,15 @@ export const calculateAdditionalHours = (
 
             additionalHoursBreakdown.toil += bhToil;
 
-            if (type === "OT" || type === "Normal") {
+            if (type === "Normal" || type === "OT" || type === "TOIL") {
+                if (type === "TOIL") {
+                    additionalHoursBreakdown.toil += plannedAdditionalHours;
+                    paidAdditionalHours = Math.max(
+                        0,
+                        paidAdditionalHours - plannedAdditionalHours
+                    );
+                }
+
                 additionalHoursBreakdown.flat = Math.max(
                     0,
                     Math.min(
@@ -410,10 +415,6 @@ export const calculateAdditionalHours = (
                 additionalHoursBreakdown.flat = Math.floor(
                     paidAdditionalHours * 1.12004801920768
                 );
-            }
-
-            if (type === "TOIL") {
-                additionalHoursBreakdown.toil += plannedAdditionalHours;
             }
         } else if (type === "Normal") {
             additionalHoursBreakdown.toil += calculateBankHolidayHours(

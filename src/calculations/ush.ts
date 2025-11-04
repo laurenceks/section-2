@@ -259,13 +259,20 @@ export const calculateUsh = ({
     let plannedHigherRaw = 0;
     let overrunLower = 0;
     let overrunHigher = 0;
-    if (from && planned_to && ushTypes.includes(type)) {
+    if (
+        from &&
+        planned_to &&
+        (ushTypes.includes(type) || (type === "TOIL" && overrun_type == "OT"))
+    ) {
         const fromObj = new Date(from);
         const plannedToObj = new Date(planned_to);
         const actualToObj = actual_to ? new Date(actual_to) : null;
 
-        plannedLowerRaw = calculateRawLowerRate(fromObj, plannedToObj);
-        plannedHigherRaw = calculateRawHigherRate(fromObj, plannedToObj);
+        if (ushTypes.includes(type)) {
+            plannedLowerRaw = calculateRawLowerRate(fromObj, plannedToObj);
+            plannedHigherRaw = calculateRawHigherRate(fromObj, plannedToObj);
+        }
+
         const totalPlannedUshRaw = plannedLowerRaw + plannedHigherRaw;
 
         const paidOverrunLength =
