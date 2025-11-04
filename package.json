@@ -1,6 +1,6 @@
 {
     "name": "section-2",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A library for calculating unsocial hours entitlements under the NHS agenda for change's section 2",
     "type": "module",
     "main": "./dist/cjs/index.js",
