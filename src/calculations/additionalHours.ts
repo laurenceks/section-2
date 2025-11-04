@@ -348,7 +348,8 @@ export const calculateAdditionalHours = (
                 : calculateShiftLength(plannedToObj, actualToObj);
 
         let paidAdditionalHours =
-            plannedAdditionalHours + (overrun_type === "OT" ? overrunHours : 0);
+            plannedAdditionalHours +
+            (overrun_type === "OT" || type === "Bank" ? overrunHours : 0);
 
         if (absentShiftTypes.includes(type)) {
             additionalHoursBreakdown.absent_hours = calculateShiftHours(
@@ -438,7 +439,8 @@ export const calculateAdditionalHours = (
 
         if (
             ["Normal", ...additionalHoursShiftTypes].includes(type) &&
-            overrun_type === "TOIL"
+            overrun_type === "TOIL" &&
+            type !== "Bank"
         ) {
             additionalHoursBreakdown.toil += overrunHours;
         }
