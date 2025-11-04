@@ -21,7 +21,8 @@
         "build:esm": "tsc -p tsconfig.esm.json",
         "build:cjs": "tsc -p tsconfig.cjs.json",
         "copy:types": "cpy \"src/types/**/*.d.ts\" dist/esm/types && cpy \"src/types/**/*.d.ts\" dist/cjs/types",
-        "build": "npm run build:esm && npm run build:cjs && npm run copy:types"
+        "build": "npm run build:esm && npm run build:cjs && npm run copy:types",
+        "prepublishOnly": "node checkTagVersion.js"
     },
     "repository": {
         "type": "git",
