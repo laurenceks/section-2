@@ -445,7 +445,7 @@ export const calculateUsh = ({
                 break;
             case "flat":
                 {
-                    if (from.getDay()) {
+                    if (from.getDay() && !isBankHoliday(from)) {
                         plannedLowerRaw = 7200000; // 2hrs;
                     } else {
                         plannedHigherRaw = 7200000; // 2hrs (Sun);

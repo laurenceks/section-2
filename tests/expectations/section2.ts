@@ -4785,6 +4785,26 @@ export const section2Expectations: {
         },
         {
             params: {
+                name: "Flat (BH)",
+                from: "2025-12-25 06:30:00",
+                planned_to: "2025-12-25 18:30:00",
+                actual_to: "2025-12-25 18:30:00",
+                type: "AL (relief)",
+                overrun_type: "OT",
+            },
+            options: { leave_relief_ush_type: "flat" },
+            result: {
+                toil: 0,
+                flat: 0,
+                lower_rate: 0,
+                time_and_half: 0,
+                higher_rate: 7200000,
+                double: 0,
+                absent_hours: 41400000,
+            },
+        },
+        {
+            params: {
                 name: "None",
                 from: "2025-10-28 06:30:00",
                 planned_to: "2025-10-28 18:30:00",
