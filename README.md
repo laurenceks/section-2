@@ -33,20 +33,30 @@ It returns an object with calculated durations *in ms*.
 
 ```typescript
 interface Section2 {
-    //Total time absent
+    // Total time absent
     absent_hours: number;
-    //Total time paid at double rate
+    // Total time paid at double rate
     double: number;
-    //Total time paid at normal rate
+    // Total time paid at normal rate
     flat: number;
-    //Total time paid at time and a half rate
+    // Total time paid at time and a half rate
     time_and_half: number;
-    //Total TOIL
+    // Total TOIL
     toil: number;
-    //Total time paid at higher rate
+    // Total time paid at higher rate
     higher_rate: number;
-    //Total time paid at lower rate
+    // Total time paid at lower rate
     lower_rate: number;
+    // Additional information used for calculating leave on relief payment discrepencies (see USH below)
+    leave_on_relief_ush_details: null | {
+        total_eligible_worked_hours: number;
+        total_lower: number;
+        total_higher: number;
+        average_lower: number;
+        average_higher: number;
+        leave_hours: number;
+        shifts: Section2Shift[];
+    };
 }
 ```
 
@@ -242,6 +252,23 @@ interface Ush {
     higher_rate: number;
     // Total time paid at lower rate
     lower_rate: number;
+    // Additional information for USH for leave during relief discrepencies
+    leave_on_relief_ush_details: null | {
+        // Total eligible hours worked (core hours and additional hours below the 37.5 threshold)
+        total_eligible_worked_hours: number;
+        // Total lower rate
+        total_lower: number;
+        // Total higher rate
+        total_higher: number;
+        // Average lower rate (lower/total hours)
+        average_lower: number;
+        // Average higher rate (higher/total hours)
+        average_higher: number;
+        // The number of leave hours the average is applied to
+        leave_hours: number;
+        // The shifts used to calculate the result
+        shifts: Section2Shift[];
+    };
 }
 ```
 
