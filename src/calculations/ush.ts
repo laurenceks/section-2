@@ -8,6 +8,7 @@ import {
     Overrun,
     Section2Shift,
     ShiftType,
+    Ush,
 } from "../types/section2";
 import { addDaysToTimestamp, formatDate } from "../utils/formatDates";
 import { validateTimestampParameters } from "../utils/validateTimestamp";
@@ -157,6 +158,7 @@ const calculateAverageUshForRelief = (
     );
     const fromSortingString = formatDate(from, "yyyy-mm-dd");
     const totalUsh = { lower: 0, higher: 0, hours: 0 };
+    const windowShifts = [];
     for (const shift of log) {
         if (
             shift.date < averagePeriodStart ||
@@ -164,6 +166,7 @@ const calculateAverageUshForRelief = (
             shift.type === "AL (relief)" ||
             shift.type === "Absent (TOIL relief)" ||
             shift.type === "TOIL" ||
+            // shift.type === "OT" ||
             shift.type === "Sick"
         ) {
             continue;
@@ -171,10 +174,11 @@ const calculateAverageUshForRelief = (
         if (shift.date >= fromSortingString) {
             break;
         }
+        windowShifts.push({ ...shift });
+
         totalUsh.lower = totalUsh.lower + shift.lower_rate;
         totalUsh.higher = totalUsh.higher + shift.higher_rate;
 
-        //only count hours when USH was possible (i.e. under 37.5/wk threshold)
         totalUsh.hours =
             totalUsh.hours +
             Math.max(
@@ -189,15 +193,23 @@ const calculateAverageUshForRelief = (
     }
     const shiftHours = calculateShiftHours(from, plannedTo);
 
+    const average_lower = totalUsh.lower / totalUsh.hours;
+    const average_higher = totalUsh.higher / totalUsh.hours;
+
     return {
         plannedLowerRaw:
-            totalUsh.hours === 0
-                ? 0
-                : Math.round((totalUsh.lower / totalUsh.hours) * shiftHours),
+            totalUsh.hours === 0 ? 0 : Math.round(average_lower * shiftHours),
         plannedHigherRaw:
-            totalUsh.hours === 0
-                ? 0
-                : Math.round((totalUsh.higher / totalUsh.hours) * shiftHours),
+            totalUsh.hours === 0 ? 0 : Math.round(average_higher * shiftHours),
+        details: {
+            total_eligible_worked_hours: totalUsh.hours,
+            total_lower: totalUsh.lower,
+            total_higher: totalUsh.higher,
+            average_lower,
+            average_higher,
+            leave_hours: shiftHours,
+            shifts: windowShifts,
+        },
     };
 };
 
@@ -220,7 +232,7 @@ const ushTypes: ShiftType[] = ["Normal", "OT", "AL", "Absent (TOIL)", "Bank"];
  * @param shift.break_from_higher - if set to `true` breaks will first be deducted from higher rate earnings, if `false` from lower rate first, defaults to `true`
  * @param shift.leave_relief_ush_type - specifies the way unsocial hours are calculated when a shift is leave or TOIL on unplanned relief, defaults to `"best"`
  *
- * @returns USH
+ * @returns USH or ReportUsh if includeDetails === true AND type === "AL (relief)" OR type ==="Absent (TOIL relief)"
  */
 
 export const calculateUsh = ({
@@ -249,16 +261,21 @@ export const calculateUsh = ({
     actual_to?: Date | null;
     leave_relief_ush_type?: LeaveReliefUsh;
     employment_id?: string | number;
-}) => {
+}): Ush => {
     if (!validateTimestampParameters(from, planned_to, actual_to)) {
         //times are either invalid or out of sequence - return 0 for everything
-        return { lower_rate: 0, higher_rate: 0 };
+        return {
+            lower_rate: 0,
+            higher_rate: 0,
+            leave_on_relief_ush_details: null,
+        };
     }
 
     let plannedLowerRaw = 0;
     let plannedHigherRaw = 0;
     let overrunLower = 0;
     let overrunHigher = 0;
+    let details = null;
     if (
         from &&
         planned_to &&
@@ -392,6 +409,7 @@ export const calculateUsh = ({
                     const {
                         plannedLowerRaw: lower13,
                         plannedHigherRaw: higher13,
+                        details: details13,
                     } = calculateAverageUshForRelief(
                         from,
                         planned_to,
@@ -402,6 +420,7 @@ export const calculateUsh = ({
                     const {
                         plannedLowerRaw: lower52,
                         plannedHigherRaw: higher52,
+                        details: details52,
                     } = calculateAverageUshForRelief(
                         from,
                         planned_to,
@@ -413,15 +432,17 @@ export const calculateUsh = ({
                     if (lower13 + higher13 > lower52 + higher52) {
                         plannedLowerRaw = lower13;
                         plannedHigherRaw = higher13;
+                        details = details13;
                     } else {
                         plannedLowerRaw = lower52;
                         plannedHigherRaw = higher52;
+                        details = details52;
                     }
                 }
                 break;
             case "average13":
                 {
-                    ({ plannedLowerRaw, plannedHigherRaw } =
+                    ({ plannedLowerRaw, plannedHigherRaw, details } =
                         calculateAverageUshForRelief(
                             from,
                             planned_to,
@@ -433,7 +454,7 @@ export const calculateUsh = ({
                 break;
             case "average52":
                 {
-                    ({ plannedLowerRaw, plannedHigherRaw } =
+                    ({ plannedLowerRaw, plannedHigherRaw, details } =
                         calculateAverageUshForRelief(
                             from,
                             planned_to,
@@ -456,6 +477,7 @@ export const calculateUsh = ({
     }
 
     return {
+        leave_on_relief_ush_details: details,
         lower_rate: Math.max(0, plannedLowerRaw + overrunLower),
         higher_rate: Math.max(0, plannedHigherRaw + overrunHigher),
     };

@@ -54,6 +54,18 @@ export interface Ush {
     higher_rate: number;
     /** Total time paid at lower rate (ms) */
     lower_rate: number;
+    /**
+     * Additional information used for calculating leave on relief payment discrepencies
+     */
+    leave_on_relief_ush_details: null | {
+        total_eligible_worked_hours: number;
+        total_lower: number;
+        total_higher: number;
+        average_lower: number;
+        average_higher: number;
+        leave_hours: number;
+        shifts: Section2Shift[];
+    };
 }
 
 /**

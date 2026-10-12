@@ -74,6 +74,7 @@ export const calculateSection2 = (
             lower_rate: 0,
             double: 0,
             absent_hours: 0,
+            leave_on_relief_ush_details: null,
         };
     }
 
