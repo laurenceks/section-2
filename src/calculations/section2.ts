@@ -51,6 +51,8 @@ export const calculateSection2 = (
         employment_id = undefined,
         break_override = null,
         shifts = [],
+        manual_lower_rate = 0,
+        manual_higher_rate = 0,
     }: Section2Params,
     {
         weekly_hours = 135000000,
@@ -116,6 +118,8 @@ export const calculateSection2 = (
         actual_to: actualToObj,
         leave_relief_ush_type,
         employment_id,
+        manual_lower_rate,
+        manual_higher_rate,
     });
     return { ...additionalHours, ...ush };
 };

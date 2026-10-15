@@ -248,6 +248,8 @@ export const calculateUsh = ({
     actual_to = null,
     leave_relief_ush_type = "best",
     employment_id,
+    manual_lower_rate = 0,
+    manual_higher_rate = 0,
 }: {
     from: Date;
     planned_to: Date;
@@ -261,6 +263,8 @@ export const calculateUsh = ({
     actual_to?: Date | null;
     leave_relief_ush_type?: LeaveReliefUsh;
     employment_id?: string | number;
+    manual_lower_rate?: number;
+    manual_higher_rate?: number;
 }): Ush => {
     if (!validateTimestampParameters(from, planned_to, actual_to)) {
         //times are either invalid or out of sequence - return 0 for everything
@@ -428,7 +432,7 @@ export const calculateUsh = ({
                         shifts,
                         employment_id
                     );
-                    //TODO weight for higher?
+
                     if (lower13 + higher13 > lower52 + higher52) {
                         plannedLowerRaw = lower13;
                         plannedHigherRaw = higher13;
@@ -469,7 +473,16 @@ export const calculateUsh = ({
                     if (from.getDay() && !isBankHoliday(from)) {
                         plannedLowerRaw = 7200000; // 2hrs;
                     } else {
-                        plannedHigherRaw = 7200000; // 2hrs (Sun);
+                        plannedHigherRaw = 7200000; // 2hrs (Sun/BH);
+                    }
+                }
+                break;
+            case "manual":
+                {
+                    if (from.getDay() && !isBankHoliday(from)) {
+                        plannedLowerRaw = manual_lower_rate;
+                    } else {
+                        plannedHigherRaw = manual_higher_rate;
                     }
                 }
                 break;

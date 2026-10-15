@@ -145,6 +145,9 @@ export interface Section2Params {
     break_override?: number | null;
     /** An array of shifts, used to calculate different rate thresholds and unsocial averages */
     shifts?: Section2Shift[];
+    /** Manual overrides for lower and higher rate values for absent on relief calculations **/
+    manual_lower_rate?: number;
+    manual_higher_rate?: number;
 }
 /**
  * The object required to calculate section 2 and additional hours representing a shift
@@ -191,4 +194,5 @@ export type LeaveReliefUsh =
     | "average13"
     | "average52"
     | "flat"
+    | "manual"
     | "none";
