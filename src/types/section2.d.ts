@@ -48,7 +48,6 @@ export interface AdditionalHours {
 /**
  * The returned object of calculated section 2 hours; the total unsocial hours awarded **without additional hours accounted for**
  */
-
 export interface Ush {
     /** Total time paid at higher rate (ms) */
     higher_rate: number;
@@ -64,7 +63,7 @@ export interface Ush {
         average_lower: number;
         average_higher: number;
         leave_hours: number;
-        shifts: Section2Shift[];
+        shifts: NestedSection2Shift[];
     };
 }
 
@@ -123,7 +122,7 @@ export interface UshParams
             Pick<AdditionalHoursParams, "type" | "actual_to" | "overrun_type">
         > {
     /** An array of shifts, used to calculate different rate thresholds and unsocial averages */
-    shifts?: Section2Shift[];
+    shifts?: NestedSection2Shift[];
 }
 
 export interface Section2Params {
@@ -144,7 +143,7 @@ export interface Section2Params {
     /** The duration of the shift's break **in ms** to override the default of 30mins every 6hrs */
     break_override?: number | null;
     /** An array of shifts, used to calculate different rate thresholds and unsocial averages */
-    shifts?: Section2Shift[];
+    shifts?: NestedSection2Shift[];
     /** Manual overrides for lower and higher rate values for absent on relief calculations **/
     manual_lower_rate?: number;
     manual_higher_rate?: number;
@@ -178,6 +177,12 @@ export interface Section2Shift
     planned_to: string;
     /** The type of shift */
     type: ShiftType;
+}
+
+/** Nested shifts don't need details **/
+export interface NestedSection2Shift
+    extends Omit<Section2Shift, "leave_on_relief_ush_details"> {
+    leave_on_relief_ush_details?: Ush["leave_on_relief_ush_details"];
 }
 
 /**

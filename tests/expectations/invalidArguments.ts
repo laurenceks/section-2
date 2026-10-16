@@ -138,6 +138,7 @@ export const invalidArgumentsExpectations: {
             lower_rate: 7200000,
             time_and_half: 0,
             toil: 0,
+            leave_on_relief_ush_details: null,
         },
     },
     {
@@ -158,6 +159,7 @@ export const invalidArgumentsExpectations: {
             lower_rate: 7200000,
             time_and_half: 0,
             toil: 0,
+            leave_on_relief_ush_details: null,
         },
     },
     {
@@ -515,6 +517,7 @@ export const invalidArgumentsExpectations: {
         result: {
             higher_rate: 0,
             lower_rate: 7200000,
+            leave_on_relief_ush_details: null,
         },
     },
     {
@@ -531,6 +534,7 @@ export const invalidArgumentsExpectations: {
         result: {
             higher_rate: 0,
             lower_rate: 7200000,
+            leave_on_relief_ush_details: null,
         },
     },
     {

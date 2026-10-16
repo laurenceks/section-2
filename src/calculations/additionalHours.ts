@@ -2,8 +2,8 @@ import { makeToAlwaysLater } from "../utils/conversions";
 import {
     AdditionalHours,
     AdditionalHoursParams,
+    NestedSection2Shift,
     Overrun,
-    Section2Shift,
     ShiftType,
 } from "../types/section2";
 import {
@@ -20,7 +20,7 @@ import { validateTimestampParameters } from "../utils/validateTimestamp";
 
 export const calculateCumulativeAdditionalHours = (
     from: Date,
-    shifts: Section2Shift[] = [],
+    shifts: NestedSection2Shift[] = [],
     id?: string | number,
     employment_id?: string | number
 ) => {
@@ -304,7 +304,7 @@ export const calculateAdditionalHours = (
         break_override = null,
         break_from_higher = true,
     }: AdditionalHoursParams,
-    shifts: Section2Shift[]
+    shifts: NestedSection2Shift[]
 ) => {
     const additionalHoursBreakdown: AdditionalHours = {
         flat: 0,

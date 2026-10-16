@@ -46,6 +46,7 @@ const errorResults = [
         lower_rate: 0,
         time_and_half: 0,
         toil: 0,
+        leave_on_relief_ush_details: null,
     },
     {
         absent_hours: 0,
@@ -57,6 +58,7 @@ const errorResults = [
     {
         higher_rate: 0,
         lower_rate: 0,
+        leave_on_relief_ush_details: null,
     },
 ];
 const namePrefixes = ["S2", "AH", "USH"];

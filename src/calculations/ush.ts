@@ -5,8 +5,8 @@ import {
 } from "../utils/shiftLengths";
 import {
     LeaveReliefUsh,
+    NestedSection2Shift,
     Overrun,
-    Section2Shift,
     ShiftType,
     Ush,
 } from "../types/section2";
@@ -149,7 +149,7 @@ const calculateAverageUshForRelief = (
     from: Date,
     plannedTo: Date,
     weeks: number,
-    log: Section2Shift[],
+    log: NestedSection2Shift[],
     employmentId?: number | string
 ) => {
     const averagePeriodStart = formatDate(
@@ -256,7 +256,7 @@ export const calculateUsh = ({
     type?: ShiftType;
     hours_over_threshold?: number;
     break_override?: number | null;
-    shifts?: Section2Shift[];
+    shifts?: NestedSection2Shift[];
     half_is_all_ush?: boolean;
     break_from_higher?: boolean;
     overrun_type?: Overrun;
@@ -480,6 +480,7 @@ export const calculateUsh = ({
             case "manual":
                 {
                     plannedLowerRaw = manual_lower_rate;
+                    plannedHigherRaw = manual_higher_rate;
                 }
                 break;
         }

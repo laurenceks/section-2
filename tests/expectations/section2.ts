@@ -1,11 +1,11 @@
 import {
+    NestedSection2Shift,
     Section2,
     Section2Options,
     Section2Params,
-    Section2Shift,
 } from "../../src";
 
-const leaveOnReliefShifts: Section2Shift[] = [
+const leaveOnReliefShifts: NestedSection2Shift[] = [
     {
         date: "2019-01-05",
         from: "2019-01-05 06:30:00",
@@ -306,6 +306,7 @@ export const section2Expectations: {
                 lower_rate: 7.2e6,
                 time_and_half: 900000,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -325,6 +326,7 @@ export const section2Expectations: {
                 lower_rate: 19800000,
                 time_and_half: 1800000,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -344,6 +346,7 @@ export const section2Expectations: {
                 toil: 0,
                 lower_rate: 41400000,
                 higher_rate: 0,
+                leave_on_relief_ush_details: null,
             },
             options: {
                 half_is_all_ush: true,
@@ -368,6 +371,7 @@ export const section2Expectations: {
                 toil: 0,
                 lower_rate: 41400000 + 1800000,
                 higher_rate: 0,
+                leave_on_relief_ush_details: null,
             },
             options: {
                 half_is_all_ush: true,
@@ -393,6 +397,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -412,6 +417,7 @@ export const section2Expectations: {
                 lower_rate: 7200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -431,6 +437,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 2100000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -450,6 +457,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -469,6 +477,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -488,6 +497,7 @@ export const section2Expectations: {
                 lower_rate: 27000000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -507,6 +517,7 @@ export const section2Expectations: {
                 lower_rate: 27000000,
                 time_and_half: 0,
                 toil: 1200000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -526,6 +537,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -545,6 +557,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 42600000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -564,6 +577,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 900000,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -590,6 +604,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -610,6 +625,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -630,6 +646,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -650,6 +667,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -671,6 +689,7 @@ export const section2Expectations: {
                 lower_rate: 19800000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -695,6 +714,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -719,6 +739,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -867,6 +888,7 @@ export const section2Expectations: {
                 lower_rate: 33300000,
                 time_and_half: 9300000,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -891,6 +913,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 1200000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -915,6 +938,7 @@ export const section2Expectations: {
                 lower_rate: 34200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -939,6 +963,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 1800000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -963,6 +988,7 @@ export const section2Expectations: {
                 lower_rate: 21600000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -987,6 +1013,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1011,6 +1038,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1035,6 +1063,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 1200000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1059,6 +1088,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1083,6 +1113,7 @@ export const section2Expectations: {
                 lower_rate: 15300000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1107,6 +1138,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 42600000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1131,6 +1163,7 @@ export const section2Expectations: {
                 lower_rate: 7200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1155,6 +1188,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1179,6 +1213,7 @@ export const section2Expectations: {
                 lower_rate: 21600000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1203,6 +1238,7 @@ export const section2Expectations: {
                 lower_rate: 34200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1227,6 +1263,7 @@ export const section2Expectations: {
                 lower_rate: 16200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1251,6 +1288,7 @@ export const section2Expectations: {
                 lower_rate: 7200000,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1275,6 +1313,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -1301,6 +1340,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1325,6 +1365,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1349,6 +1390,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1373,6 +1415,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1397,6 +1440,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1421,6 +1465,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1445,6 +1490,7 @@ export const section2Expectations: {
                 lower_rate: 0,
                 time_and_half: 0,
                 toil: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -1467,6 +1513,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1487,6 +1534,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1507,6 +1555,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1527,6 +1576,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1547,6 +1597,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1567,6 +1618,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1587,6 +1639,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1607,6 +1660,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1627,6 +1681,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1647,6 +1702,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1667,6 +1723,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1691,6 +1748,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1711,6 +1769,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -1732,6 +1791,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1751,6 +1811,7 @@ export const section2Expectations: {
                 higher_rate: 21600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1770,6 +1831,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1789,6 +1851,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1808,6 +1871,7 @@ export const section2Expectations: {
                 higher_rate: 2700000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1827,6 +1891,7 @@ export const section2Expectations: {
                 higher_rate: 1800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1846,6 +1911,7 @@ export const section2Expectations: {
                 higher_rate: 900000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1865,6 +1931,7 @@ export const section2Expectations: {
                 higher_rate: 2700000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1884,6 +1951,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1903,6 +1971,7 @@ export const section2Expectations: {
                 higher_rate: 900000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1922,6 +1991,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1941,6 +2011,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1964,6 +2035,7 @@ export const section2Expectations: {
                 higher_rate: 9000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -1987,6 +2059,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2010,6 +2083,7 @@ export const section2Expectations: {
                 higher_rate: 1800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2033,6 +2107,7 @@ export const section2Expectations: {
                 higher_rate: 1800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -2054,6 +2129,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2073,6 +2149,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2092,6 +2169,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2111,6 +2189,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -2135,6 +2214,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2178,6 +2258,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2240,6 +2321,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -2262,6 +2344,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2282,6 +2365,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2302,6 +2386,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2322,6 +2407,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2342,6 +2428,7 @@ export const section2Expectations: {
                 higher_rate: 36000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2362,6 +2449,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2382,6 +2470,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2402,6 +2491,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2422,6 +2512,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2442,6 +2533,7 @@ export const section2Expectations: {
                 higher_rate: 9000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2462,6 +2554,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2482,6 +2575,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2502,6 +2596,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2522,6 +2617,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2542,6 +2638,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2562,6 +2659,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2582,6 +2680,7 @@ export const section2Expectations: {
                 higher_rate: 21600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2602,6 +2701,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2622,6 +2722,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2642,6 +2743,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2662,6 +2764,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -2684,6 +2787,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2704,6 +2808,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2724,6 +2829,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2744,6 +2850,7 @@ export const section2Expectations: {
                 higher_rate: 37800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2764,6 +2871,7 @@ export const section2Expectations: {
                 higher_rate: 27000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -2786,6 +2894,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2806,6 +2915,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2826,6 +2936,7 @@ export const section2Expectations: {
                 higher_rate: 32400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2846,6 +2957,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2866,6 +2978,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2886,6 +2999,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2906,6 +3020,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2926,6 +3041,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2946,6 +3062,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2966,6 +3083,7 @@ export const section2Expectations: {
                 higher_rate: 3600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -2986,6 +3104,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3006,6 +3125,7 @@ export const section2Expectations: {
                 higher_rate: 21600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3026,6 +3146,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3046,6 +3167,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3066,6 +3188,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3086,6 +3209,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3106,6 +3230,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -3128,6 +3253,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3148,6 +3274,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 41400000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3168,6 +3295,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3188,6 +3316,7 @@ export const section2Expectations: {
                 higher_rate: 27000000,
                 double: 14400000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3208,6 +3337,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 19800000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3228,6 +3358,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 19800000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3248,6 +3379,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3268,6 +3400,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3288,6 +3421,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 14400000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3308,6 +3442,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3328,6 +3463,7 @@ export const section2Expectations: {
                 higher_rate: 3600000,
                 double: 16200000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3348,6 +3484,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 9000000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3368,6 +3505,7 @@ export const section2Expectations: {
                 higher_rate: 12600000,
                 double: 7200000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3388,6 +3526,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3408,6 +3547,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3428,6 +3568,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3448,6 +3589,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3468,6 +3610,7 @@ export const section2Expectations: {
                 higher_rate: 34200000,
                 double: 7200000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3488,6 +3631,7 @@ export const section2Expectations: {
                 higher_rate: 23400000,
                 double: 18000000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3508,6 +3652,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 19800000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3528,6 +3673,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3548,6 +3694,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3568,6 +3715,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 21600000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3588,6 +3736,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 26100000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3608,6 +3757,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 27000000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3628,6 +3778,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3648,6 +3799,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 900000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3668,6 +3820,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 26100000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3688,6 +3841,7 @@ export const section2Expectations: {
                 higher_rate: 900000,
                 double: 26100000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3708,6 +3862,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3728,6 +3883,7 @@ export const section2Expectations: {
                 higher_rate: 900000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3748,6 +3904,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 3600000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3768,6 +3925,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3788,6 +3946,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3808,6 +3967,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3828,6 +3988,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 19800000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3848,6 +4009,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 19800000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3868,6 +4030,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 14400000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3888,6 +4051,7 @@ export const section2Expectations: {
                 higher_rate: 19800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -3910,6 +4074,7 @@ export const section2Expectations: {
                 higher_rate: 900000,
                 double: 26100000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3930,6 +4095,7 @@ export const section2Expectations: {
                 higher_rate: 20100000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3950,6 +4116,7 @@ export const section2Expectations: {
                 higher_rate: 21900000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3970,6 +4137,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -3990,6 +4158,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4010,6 +4179,7 @@ export const section2Expectations: {
                 higher_rate: 5700000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4030,6 +4200,7 @@ export const section2Expectations: {
                 higher_rate: 7500000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -4052,6 +4223,7 @@ export const section2Expectations: {
                 higher_rate: 23400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4072,6 +4244,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4092,6 +4265,7 @@ export const section2Expectations: {
                 higher_rate: 9000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4112,6 +4286,7 @@ export const section2Expectations: {
                 higher_rate: 9000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4132,6 +4307,7 @@ export const section2Expectations: {
                 higher_rate: 16200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4152,6 +4328,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4172,6 +4349,7 @@ export const section2Expectations: {
                 higher_rate: 1800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4192,6 +4370,7 @@ export const section2Expectations: {
                 higher_rate: 1800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4212,6 +4391,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4232,6 +4412,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4253,6 +4434,7 @@ export const section2Expectations: {
                 higher_rate: 5400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -4276,6 +4458,7 @@ export const section2Expectations: {
                 higher_rate: 39600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4297,6 +4480,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4318,6 +4502,7 @@ export const section2Expectations: {
                 higher_rate: 43200000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4339,6 +4524,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4360,6 +4546,7 @@ export const section2Expectations: {
                 higher_rate: 18000000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4381,6 +4568,7 @@ export const section2Expectations: {
                 higher_rate: 21600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4402,6 +4590,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4423,6 +4612,7 @@ export const section2Expectations: {
                 higher_rate: 14400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4444,6 +4634,7 @@ export const section2Expectations: {
                 higher_rate: 10800000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4467,6 +4658,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4529,6 +4721,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4611,6 +4804,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4632,6 +4826,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -4654,6 +4849,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4674,6 +4870,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -4697,6 +4894,129 @@ export const section2Expectations: {
                 higher_rate: 15738843,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: {
+                    average_higher: 0.38016528925619836,
+                    average_lower: 0.4738292011019284,
+                    leave_hours: 41400000,
+                    shifts: [
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-05 18:30:00",
+                            date: "2025-07-05",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-05 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 41400000,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-05 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-05 18:30:00",
+                            date: "2025-07-05",
+                            double: 0,
+                            flat: 10800000,
+                            from: "2025-07-05 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 10800000,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-05 18:30:00",
+                            time_and_half: 30600000,
+                            toil: 0,
+                            type: "OT",
+                            weekly_hours: 124200000,
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-06 18:30:00",
+                            date: "2025-07-06",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-06 06:30:00",
+                            higher_rate: 41400000,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-06 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-12 18:30:00",
+                            date: "2025-07-12",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-12 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-12 18:30:00",
+                            time_and_half: 41400000,
+                            toil: 0,
+                            type: "OT",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-04 18:30:00",
+                            date: "2025-10-04",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-04 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 41400000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-04 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-05 18:30:00",
+                            date: "2025-10-05",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-05 06:30:00",
+                            higher_rate: 41400000,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-05 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-06 22:40:00",
+                            date: "2025-10-06",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-06 10:40:00",
+                            higher_rate: 0,
+                            lower_rate: 9600000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-06 22:40:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                    ],
+                    total_eligible_worked_hours: 217800000,
+                    total_higher: 82800000,
+                    total_lower: 103200000,
+                },
             },
         },
         {
@@ -4718,6 +5038,64 @@ export const section2Expectations: {
                 higher_rate: 13800000,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: {
+                    average_higher: 0.3333333333333333,
+                    average_lower: 0.4106280193236715,
+                    leave_hours: 41400000,
+                    shifts: [
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-04 18:30:00",
+                            date: "2025-10-04",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-04 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 41400000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-04 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-05 18:30:00",
+                            date: "2025-10-05",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-05 06:30:00",
+                            higher_rate: 41400000,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-05 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-06 22:40:00",
+                            date: "2025-10-06",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-06 10:40:00",
+                            higher_rate: 0,
+                            lower_rate: 9600000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-06 22:40:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                    ],
+                    total_eligible_worked_hours: 124200000,
+                    total_higher: 41400000,
+                    total_lower: 51000000,
+                },
             },
         },
         {
@@ -4739,6 +5117,129 @@ export const section2Expectations: {
                 higher_rate: 15738843,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: {
+                    average_higher: 0.38016528925619836,
+                    average_lower: 0.4738292011019284,
+                    leave_hours: 41400000,
+                    shifts: [
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-05 18:30:00",
+                            date: "2025-07-05",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-05 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 41400000,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-05 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-05 18:30:00",
+                            date: "2025-07-05",
+                            double: 0,
+                            flat: 10800000,
+                            from: "2025-07-05 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 10800000,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-05 18:30:00",
+                            time_and_half: 30600000,
+                            toil: 0,
+                            type: "OT",
+                            weekly_hours: 124200000,
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-06 18:30:00",
+                            date: "2025-07-06",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-06 06:30:00",
+                            higher_rate: 41400000,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-06 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-07-12 18:30:00",
+                            date: "2025-07-12",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-07-12 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-07-12 18:30:00",
+                            time_and_half: 41400000,
+                            toil: 0,
+                            type: "OT",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-04 18:30:00",
+                            date: "2025-10-04",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-04 06:30:00",
+                            higher_rate: 0,
+                            lower_rate: 41400000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-04 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-05 18:30:00",
+                            date: "2025-10-05",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-05 06:30:00",
+                            higher_rate: 41400000,
+                            lower_rate: 0,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-05 18:30:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                        {
+                            absent_hours: 0,
+                            actual_hours: 41400000,
+                            actual_to: "2025-10-06 22:40:00",
+                            date: "2025-10-06",
+                            double: 0,
+                            flat: 0,
+                            from: "2025-10-06 10:40:00",
+                            higher_rate: 0,
+                            lower_rate: 9600000,
+                            overrun_type: "OT",
+                            planned_to: "2025-10-06 22:40:00",
+                            time_and_half: 0,
+                            toil: 0,
+                            type: "Normal",
+                        },
+                    ],
+                    total_eligible_worked_hours: 217800000,
+                    total_higher: 82800000,
+                    total_lower: 103200000,
+                },
             },
         },
         {
@@ -4760,6 +5261,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4781,6 +5283,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4801,6 +5304,7 @@ export const section2Expectations: {
                 higher_rate: 7200000,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4822,6 +5326,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 41400000,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -4844,6 +5349,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4864,6 +5370,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4884,6 +5391,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4905,6 +5413,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4925,6 +5434,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4945,6 +5455,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4965,6 +5476,7 @@ export const section2Expectations: {
                 higher_rate: 600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -4985,6 +5497,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5005,6 +5518,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -5027,6 +5541,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5047,6 +5562,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5067,6 +5583,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5087,6 +5604,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5107,6 +5625,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5127,6 +5646,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 7200000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5147,6 +5667,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5167,6 +5688,7 @@ export const section2Expectations: {
                 higher_rate: 3600000,
                 double: 3600000,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
@@ -5189,6 +5711,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5209,6 +5732,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5229,6 +5753,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5249,6 +5774,7 @@ export const section2Expectations: {
                 higher_rate: 21600000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5269,6 +5795,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5289,6 +5816,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5309,6 +5837,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5331,6 +5860,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5374,6 +5904,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5500,6 +6031,7 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5677,6 +6209,7 @@ export const section2Expectations: {
                 higher_rate: 41400000,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
         {
@@ -5697,7 +6230,15 @@ export const section2Expectations: {
                 higher_rate: 0,
                 double: 0,
                 absent_hours: 0,
+                leave_on_relief_ush_details: null,
             },
         },
     ],
-};
+} satisfies Record<
+    string,
+    {
+        params: Section2Params & { name?: string };
+        options: Section2Options;
+        result: Section2;
+    }[]
+>;
