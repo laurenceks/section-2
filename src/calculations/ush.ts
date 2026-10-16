@@ -479,11 +479,7 @@ export const calculateUsh = ({
                 break;
             case "manual":
                 {
-                    if (from.getDay() && !isBankHoliday(from)) {
-                        plannedLowerRaw = manual_lower_rate;
-                    } else {
-                        plannedHigherRaw = manual_higher_rate;
-                    }
+                    plannedLowerRaw = manual_lower_rate;
                 }
                 break;
         }
